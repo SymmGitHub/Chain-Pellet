@@ -76,7 +76,6 @@ namespace ChainPellet
                 AssetHierarchy.Nodes.Clear();
                 AssetHierarchy.Nodes.AddRange(CreateDirectoryNodes(folderPath, true));
             }
-            else MessageBox.Show("No directory found at: " + Environment.NewLine + folderPath);
 
             MainPanel_Resize(this, new EventArgs());
             SetupPanel_Resize(this, new EventArgs());
@@ -377,7 +376,6 @@ namespace ChainPellet
         {
             AssetHierarchy.Nodes.Clear();
             if (Directory.Exists(folderPath)) AssetHierarchy.Nodes.AddRange(CreateDirectoryNodes(folderPath, true));
-            else MessageBox.Show("No directory found at: " + Environment.NewLine + folderPath);
         }
         private void updateHierarchyVisibility(object sender, EventArgs e)
         {
