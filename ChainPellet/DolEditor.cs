@@ -136,13 +136,13 @@ namespace ChainPellet
         }
         private void OverwriteString(int address, string newString)
         {
-            int oldLength = dolStrings[address].Length;
+            int length = maxStringLength(address);
             byte[] stringBytes = Encoding.ASCII.GetBytes(newString);
-            for (int i = 0; i < oldLength; i++)
+            for (int i = 0; i < length; i++)
             {
                 if (i >= stringBytes.Length)
                 {
-                    dolData[i + address] = 0;
+                    dolData[i + address] = 0x00;
                 }
                 else dolData[i + address] = stringBytes[i];
             }

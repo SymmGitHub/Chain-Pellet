@@ -138,7 +138,7 @@
             // 
             // CharLimit
             // 
-            CharLimit.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            CharLimit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             CharLimit.Enabled = false;
             CharLimit.Location = new Point(293, 311);
             CharLimit.Name = "CharLimit";
