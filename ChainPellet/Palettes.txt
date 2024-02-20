@@ -1,46 +1,94 @@
 ; Hello! This text file is read to location color locations for certain models
 ; Triple hashes followed by a space signify the start of a palette.
 ; Double dashes followed by a space signify the start of a section WITHIN a palette.
+; Numbers underneath contain the amount of colors a polygon has, and their starting address.
 
 ### Pac-Man ; Semicolons can be used to leave comments, and can be put after any line!
--- Body Color
-000006FC - Right Leg ; You can even leave visible address notes without semicolons since only the first 8 characters are used to find byte addresses.
-0000709C - Left Leg
-0000DA4C - Left Arm
-000100AC - Right Arm
-00013B1C - Smiling Head
-0001793E - Default Nose
-0001A756 - Open Mouth Head
-0001E9BE - Open Mouth Nose
-000207E0 - Screaming Head
-0002534C
-00029DAE
-0002BA46 - Opening Mouth Head
-0002F54E - Opening Mouth Nose
-00031EFC - Closed Mouth Head
--- Gloves Color
-0000E954 - Left Glove
-0000F710 - Left Wrist
-00010FB4 - Right Glove
-00011D70 - Right Wrist
--- Boots Color
-000015B0 - Right Boot
-000027C4 - Right Flipper
-00004028
-00005D50 - Right Skate
-00008148 - Left Flipper
-00009430 - Left Boot
-0000A9B0
-0000C6D4 - Left Skate
+-- Body
+0001:000006FC - Right Leg ; Chain Pellet only reads the first 13 characters, so feel free to put any text after the color count and address, it can work as notes for each polygon.
+0001:0000709C - Left Leg
+0001:0000DA4C - Left Arm
+0001:000100AC - Right Arm
+0002:00013B1C - Smiling Head
+0001:0001793E - Default Nose
+0002:0001A756 - Open Mouth Head
+0001:0001E9BE - Open Mouth Nose
+0002:000207E0 - Screaming Head
+0002:0002534C - Unknown
+0001:00029D9E - Unknown
+0002:0002BA46 - Opening Mouth Head
+0001:0002F54E - Opening Mouth Nose
+0001:00031EFC - Closed Mouth Head
+-- Gloves
+0001:0000E954 - Left Glove
+0001:0000F710 - Left Wrist
+0001:00010FB4 - Right Glove
+0001:00011D70 - Right Wrist
+-- Boots
+0001:000015B0 - Right Boot
+0001:000027C4 - Right Flipper
+0003:00004028 - Unknown
+0003:00005D50 - Right Skate
+0001:00008148 - Left Flipper
+0001:00009430 - Left Boot
+0003:0000A9B0 - Unknown
+0003:0000C6D4 - Left Skate
+-- Face
+0001:00016AE0 - Smiling Head Face?
+0001:00016E60 - Smiling Head Face?
+0001:00017390 - Smiling Head Face?
+0001:000187D0 - Smiling Head Face?
+0001:00018B08 - Smiling Head Face?
+0001:00018FA8 - Smiling Head Face?
+0001:0001D29C - Open Mouth Face?
+0001:0001D780 - Open Mouth Face?
+0001:0001E5C0 - Open Mouth Face?
+0001:00023740 - Screaming Mouth Face?
+0001:00023910 - Screaming Mouth Face?
+0001:000282F0 - ???
+0001:00028670 - ???
+0001:00028F20 - ???
+0001:0002E760 - Opening Mouth Face?
+0001:0002E930 - Opening Mouth Face?
+0001:0002EE3C - Opening Mouth Face?
+0001:00035168 - Closed Mouth Face?
+0001:000356FC - Closed Mouth Face?
+0001:00035ABC - Closed Mouth Face?
+0001:00035E58 - Closed Mouth Face?
+0001:000361B4 - Closed Mouth Face?
+0001:0003649C - Closed Mouth Face?
+0001:000367F0 - Closed Mouth Face?
+0001:00036C00 - Closed Mouth Face?
+0001:000370E8 - Closed Mouth Face?
+0001:00037588 - Closed Mouth Face?
+0001:00037BB4 - Closed Mouth Face?
+0001:00038200 - Closed Mouth Face?
+-- Tongue
+0001:00018140 - Smiling Head Tongue?
+0001:0001DCC2 - Open Mouth Tongue?
+0001:000293C0 - Screaming Mouth Tongue?
+0001:0002FE82 - Opening Mouth Tongue
+-- Packysac Dot?
+0001:000387C0
 
 ### Maze Ghost Gang/Purple
--- Sheet Color
-00000AAC
-000031AE
-000034EE
-0000463E
-0000497E
-00004CA6
--- Glove Color
-0000271C Left Glove
-00003BAC Right Glove
+-- Sheet
+0001:00000AAC - Body Color
+0001:000031AE - Right Forearm
+0001:000034EE - Right Upper Arm
+0001:0000463E - Left Forearm
+0001:0000497E - Left Upper Arm
+0001:00004CA6 - Forehead
+-- Face
+0001:00001B14 - Right Eye Scalera
+0001:00001DD8 - Mouth Tint
+0001:000020A8 - Scalera/Mouth?
+0002:00004FE8 - Right Iris
+0002:00005368 - Left Iris
+0001:000056B0 - Scalera/Mouth?
+0002:00005A86 - Iris?
+0002:00005DE6 - Iris?
+0001:000060B4 - Scalera/Mouth?
+-- Gloves
+0001:0000271C - Left Glove
+0001:00003BAC - Right Glove
