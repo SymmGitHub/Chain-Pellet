@@ -154,5 +154,41 @@ namespace ChainPellet.Properties {
                 this["prevAssetFilter"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CustomColorList {
+            get {
+                return ((string)(this["CustomColorList"]));
+            }
+            set {
+                this["CustomColorList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RegenClumps {
+            get {
+                return ((bool)(this["RegenClumps"]));
+            }
+            set {
+                this["RegenClumps"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useBigEndian {
+            get {
+                return ((bool)(this["useBigEndian"]));
+            }
+            set {
+                this["useBigEndian"] = value;
+            }
+        }
     }
 }
