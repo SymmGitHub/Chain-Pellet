@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -22,6 +23,7 @@ namespace ChainPellet
 
         private void AssetImport_Load(object sender, EventArgs e)
         {
+            AssetHierarchy.ContextMenuStrip = assetImportContext;
             AssetHierarchy.Nodes.Clear();
             AssetHierarchy.Nodes.AddRange(parent.CreateDirectoryNodes(parent.objectsPath, false));
 
@@ -62,18 +64,17 @@ namespace ChainPellet
                 if (child.Checked) ImportNode(child);
             }
         }
-
-        private void AssetHierarchy_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void AssetHierarchy_MouseDown(object sender, MouseEventArgs e)
         {
+            TreeNode node = AssetHierarchy.GetNodeAt(e.X, e.Y);
+            AssetHierarchy.SelectedNode = node;
             if (ModifierKeys == Keys.Shift)
             {
-                TreeNode node = e.Node;
                 bool selected = !node.Checked;
                 SelectNodeToggle(node, selected, true);
             }
-            if (ModifierKeys == Keys.Control)
+            else if (ModifierKeys == Keys.Control)
             {
-                TreeNode node = e.Node;
                 MessageBox.Show(parent.objectsPath + "\\" + node.FullPath);
             }
         }
@@ -99,7 +100,7 @@ namespace ChainPellet
             }
 
             // Also do the same for parents recursively
-            if (node.Parent != null) 
+            if (node.Parent != null)
             {
                 int checkedChildrenCount = 0;
                 foreach (TreeNode n in node.Parent.Nodes)
@@ -140,6 +141,67 @@ namespace ChainPellet
                 node.ForeColor = mainCol;
                 node.BackColor = backCol;
             }
+        }
+
+        private void openAssetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open File using default program
+            if (!Directory.Exists(parent.objectsPath)) return;
+            string filePath = parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath;
+            var process = new Process();
+            try
+            {
+                process.StartInfo = new ProcessStartInfo()
+                {
+                    UseShellExecute = true,
+                    FileName = filePath
+                };
+                process.Start();
+            }
+            catch { }
+            process.Dispose();
+        }
+        private void deleteAssetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Delete Asset
+            if (AssetHierarchy.Nodes.Count > 0)
+            {
+                if (AssetHierarchy.SelectedNode != null)
+                {
+                    if (File.Exists(parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath))
+                    {
+                        File.Delete(parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath);
+                    }
+                    else if (Directory.Exists(parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath))
+                    {
+                        Directory.Delete(parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath, true);
+                    }
+                    AssetHierarchy.Nodes.Remove(AssetHierarchy.SelectedNode);
+                }
+            }
+        }
+        private void AssetHierarchy_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            openAssetToolStripMenuItem_Click(sender, new EventArgs());
+        }
+        private void openAssetLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open File's Directory
+            if (!Directory.Exists(parent.objectsPath)) return;
+            string filePath = parent.objectsPath + "\\" + AssetHierarchy.SelectedNode.FullPath;
+            filePath = Path.GetDirectoryName(filePath);
+            var process = new Process();
+            try
+            {
+                process.StartInfo = new ProcessStartInfo()
+                {
+                    UseShellExecute = true,
+                    FileName = filePath
+                };
+                process.Start();
+            }
+            catch { }
+            process.Dispose();
         }
     }
 }

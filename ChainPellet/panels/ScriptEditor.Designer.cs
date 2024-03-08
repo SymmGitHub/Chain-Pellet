@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScriptEditor));
             label1 = new Label();
             saveScript = new Button();
             TempRTB = new RichTextBox();
@@ -62,7 +63,7 @@
             TempRTB.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             TempRTB.BackColor = Color.FromArgb(32, 32, 35);
             TempRTB.ForeColor = Color.White;
-            TempRTB.Location = new Point(12, 596);
+            TempRTB.Location = new Point(565, 10);
             TempRTB.Name = "TempRTB";
             TempRTB.Size = new Size(10, 10);
             TempRTB.TabIndex = 19;

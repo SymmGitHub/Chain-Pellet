@@ -47,8 +47,12 @@
             colorList = new ListView();
             hexColumn = new ColumnHeader();
             colorColumn = new ColumnHeader();
+            colorListContext = new ContextMenuStrip(components);
+            copyColorHexToolStripMenuItem = new ToolStripMenuItem();
+            copyColorRGBToolStripMenuItem = new ToolStripMenuItem();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)alphaValue).BeginInit();
+            colorListContext.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -248,7 +252,6 @@
             colorList.TabIndex = 38;
             colorList.UseCompatibleStateImageBehavior = false;
             colorList.View = View.Details;
-            colorList.SelectedIndexChanged += colorList_SelectedIndexChanged;
             // 
             // hexColumn
             // 
@@ -261,6 +264,27 @@
             colorColumn.DisplayIndex = 0;
             colorColumn.Text = "Col.";
             colorColumn.Width = 45;
+            // 
+            // colorListContext
+            // 
+            colorListContext.ImageScalingSize = new Size(20, 20);
+            colorListContext.Items.AddRange(new ToolStripItem[] { copyColorHexToolStripMenuItem, copyColorRGBToolStripMenuItem });
+            colorListContext.Name = "colorListContext";
+            colorListContext.Size = new Size(185, 52);
+            // 
+            // copyColorHexToolStripMenuItem
+            // 
+            copyColorHexToolStripMenuItem.Name = "copyColorHexToolStripMenuItem";
+            copyColorHexToolStripMenuItem.Size = new Size(184, 24);
+            copyColorHexToolStripMenuItem.Text = "Copy Color Hex";
+            copyColorHexToolStripMenuItem.Click += copyColorHexToolStripMenuItem_Click;
+            // 
+            // copyColorRGBToolStripMenuItem
+            // 
+            copyColorRGBToolStripMenuItem.Name = "copyColorRGBToolStripMenuItem";
+            copyColorRGBToolStripMenuItem.Size = new Size(184, 24);
+            copyColorRGBToolStripMenuItem.Text = "Copy Color RGB";
+            copyColorRGBToolStripMenuItem.Click += copyColorRGBToolStripMenuItem_Click;
             // 
             // ModelEditor
             // 
@@ -283,6 +307,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)alphaValue).EndInit();
+            colorListContext.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -307,5 +332,10 @@
         private NumericUpDown alphaValue;
         private Label label3;
         private CheckBox alphaIgnore;
+        private ContextMenuStrip colorListContext;
+        private ToolStripMenuItem copyColorHexToolStripMenuItem;
+        private ToolStripMenuItem copyColorRGBToolStripMenuItem;
+        private ToolStripMenuItem pasteColorHexToolStripMenuItem;
+        private ToolStripMenuItem pasteColorRGBToolStripMenuItem;
     }
 }

@@ -40,7 +40,7 @@ namespace ChainPellet
             read.Close();
             read.Dispose();
 
-            CommentFilterText(TempRTB, ScriptRTB, true);
+            CommentFilterText(TempRTB, ScriptRTB, true, 0);
             scriptOverwriteAvailable = true;
 
         }
@@ -52,10 +52,10 @@ namespace ChainPellet
 
                 int curSemiCount = ScriptRTB.Text.Length - ScriptRTB.Text.Replace(";", "").Length;
                 int prevSemiCount = priorText.Length - priorText.Replace(";", "").Length;
-                int curLineCount = ScriptRTB.Rtf.Length - ScriptRTB.Rtf.Replace("\\par", "#####").Length;
+                int curLineCount =  (ScriptRTB.Rtf.Replace("\\par", "#####").Length) - ScriptRTB.Rtf.Length;
                 if (curLineCount != priorLineCount) ScriptRTB.SelectionColor = ScriptRTB.ForeColor;
 
-                if (curSemiCount != prevSemiCount || curLineCount != priorLineCount) CommentFilterText(TempRTB, ScriptRTB, false);
+                if (curSemiCount != prevSemiCount || curLineCount != priorLineCount) CommentFilterText(TempRTB, ScriptRTB, false, (curLineCount - priorLineCount));
                 priorText = ScriptRTB.Text;
                 priorLineCount = curLineCount;
 
@@ -63,7 +63,7 @@ namespace ChainPellet
                 scriptOverwriteAvailable = true;
             }
         }
-        public void CommentFilterText(RichTextBox box, RichTextBox finalBox, bool initial)
+        public void CommentFilterText(RichTextBox box, RichTextBox finalBox, bool initial, int lineDifference)
         {
             int start = finalBox.SelectionStart;
             int length = finalBox.SelectionLength;
@@ -76,6 +76,12 @@ namespace ChainPellet
                 lineCheckLength = finalBox.Lines.Length;
             }
 
+            if (lineDifference > 0)
+            {
+                lineCheckStart -= lineDifference;
+                lineCheckLength += lineDifference;
+            }
+
             if (lineCheckStart < 0) lineCheckStart = 0;
             if (lineCheckLength > finalBox.Lines.Length) lineCheckLength = finalBox.Lines.Length;
 
@@ -85,10 +91,6 @@ namespace ChainPellet
             {
                 lineCharStart += lines[i].Length + 1;
             }
-
-            //MessageBox.Show($"Selection start: {start}, selection length: {length}, Initial: {initial}" + Environment.NewLine +
-            //$"Character Position of safe check's start {safeStart}" + Environment.NewLine +
-            //$"Going to check script lines: {lineCheckStart} with length {lineCheckLength}");
 
             box.Clear();
             box.Rtf = finalBox.Rtf;

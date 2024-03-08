@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,7 @@ namespace ChainPellet
                 loadedBytes = File.ReadAllBytes(filePath);
 
             }
+            colorList.ContextMenuStrip = colorListContext;
             paletteList.Items.Clear();
             modelPalettes.Clear();
             SearchColors();
@@ -162,33 +164,36 @@ namespace ChainPellet
             writer.Dispose();
         }
 
-        private void OverwriteColor(string colorHex, int[] locations)
+        private void OverwriteColor(Color newCol, int[] locations, out byte finalAlpha)
         {
+            finalAlpha = (byte)alphaValue.Value;
             if (loadedBytes == null || loadedBytes.Length == 0)
             {
                 MessageBox.Show("No model is currently loaded!");
                 return;
             }
 
+            string colorHex = HexFromColor(newCol);
             byte R = byte.Parse(colorHex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
             byte G = byte.Parse(colorHex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
             byte B = byte.Parse(colorHex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
             byte A = (byte)alphaValue.Value;
 
-            foreach (int location in locations)
+            for (int i = 0; i < locations.Length; i++)
             {
                 try
                 {
-                    loadedBytes[location] = R;
-                    loadedBytes[location + 1] = G;
-                    loadedBytes[location + 2] = B;
-                    if (!alphaIgnore.Checked) loadedBytes[location + 3] = A;
+                    if (alphaIgnore.Checked) finalAlpha = loadedBytes[locations[i] + 3];
+                    loadedBytes[locations[i]] = R;
+                    loadedBytes[locations[i] + 1] = G;
+                    loadedBytes[locations[i] + 2] = B;
+                    loadedBytes[locations[i] + 3] = finalAlpha;
 
-                    Console.WriteLine($"Wrote {colorHex} to Address: {location.ToString("X8")}");
+                    Console.WriteLine($"Wrote {colorHex} to Address: {locations[i].ToString("X8")}");
                 }
                 catch
                 {
-                    MessageBox.Show($"Failed to write at Address: {location.ToString("X8")}");
+                    MessageBox.Show($"Failed to write at Address: {locations[i].ToString("X8")}");
                 }
             }
         }
@@ -211,8 +216,8 @@ namespace ChainPellet
             else
                 single = new int[1] { curAddress };
 
-            OverwriteColor(newHex.Text, single);
-            RefreshColorList(curSet, curAddress);
+            OverwriteColor(ColorFromHex(newHex.Text), single, out byte alpha);
+            colorList.Items[colorList.SelectedIndices[0]] = UpdatedColor(ColorFromHex(newHex.Text), alpha);
         }
         private void ReplaceAll_Click(object sender, EventArgs e)
         {
@@ -224,7 +229,7 @@ namespace ChainPellet
             {
                 addresses.Add(curAddress + (i * 4));
             }
-            OverwriteColor(newHex.Text, addresses.ToArray());
+            OverwriteColor(ColorFromHex(newHex.Text), addresses.ToArray(), out byte alpha);
             RefreshColorList(curSet, addresses[0]);
         }
         private void palette_SelectedIndexChanged(object sender, EventArgs e)
@@ -264,17 +269,6 @@ namespace ChainPellet
             {
                 MessageBox.Show("Failed to load Color Set");
                 return;
-            }
-        }
-        private void colorList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (paletteList.SelectedIndex == -1) return;
-            //if (colorList.Items.Count == 0) return;
-            //if (colorList.SelectedIndices.Count > 0)
-            {
-                //string location = addressList.SelectedItem.ToString().Substring(0, 8);
-                //int address = int.Parse(location, System.Globalization.NumberStyles.HexNumber);
-                //curAddress = address;
             }
         }
         private void newHex_TextChanged(object sender, EventArgs e)
@@ -341,15 +335,6 @@ namespace ChainPellet
                 MessageBox.Show($"Failed to refresh colors at: '{address}' in the current model");
             }
         }
-        class Palette
-        {
-            public Dictionary<string, List<ColorSet>> sections = new Dictionary<string, List<ColorSet>>();
-        }
-        struct ColorSet
-        {
-            public string source;
-            public int count;
-        }
         private int AddressFromSource(string source)
         {
             try
@@ -402,21 +387,71 @@ namespace ChainPellet
                 newSwatch.SubItems.Add("    ");
                 newSwatch.BackColor = colorList.BackColor;
                 newSwatch.SubItems[1].BackColor = col;
-
-                //float bright = col.GetBrightness();
-                //if (bright > 0.5)
-                //{
-                //    newSwatch.ForeColor = Color.Black;
-                //}
-                //else newSwatch.ForeColor = Color.White;
-
                 return newSwatch;
+            }
+        }
+
+        private ListViewItem UpdatedColor(Color col, byte alpha)
+        {
+            if (loadedBytes.Length == 0 || loadedBytes == null) return null;
+            else
+            {
+                string hex = HexFromColor(col);
+                ListViewItem newSwatch = new ListViewItem();
+                newSwatch.UseItemStyleForSubItems = false;
+                newSwatch.Text = hex + ":" + alpha.ToString("X2");
+                newSwatch.SubItems.Add("    ");
+                newSwatch.BackColor = colorList.BackColor;
+                newSwatch.SubItems[1].BackColor = col;
+                return newSwatch;
+            }
+        }
+        private string HexFromColor(Color col)
+        {
+            return $"{col.R.ToString("X2")}{col.G.ToString("X2")}{col.B.ToString("X2")}";
+        }
+        private Color ColorFromHex(string hex)
+        {
+            try
+            {
+                Color testCol = System.Drawing.ColorTranslator.FromHtml("#" + hex);
+                return testCol;
+            }
+            catch
+            {
+                return Color.White;
             }
         }
 
         private void alphaIgnore_CheckedChanged(object sender, EventArgs e)
         {
             alphaValue.Enabled = !alphaIgnore.Checked;
+        }
+
+        class Palette
+        {
+            public Dictionary<string, List<ColorSet>> sections = new Dictionary<string, List<ColorSet>>();
+        }
+        struct ColorSet
+        {
+            public string source;
+            public int count;
+        }
+
+        private void copyColorHexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(colorList.SelectedItems[0].Text.Substring(0, 6));
+        }
+
+        private void copyColorRGBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                Color copyColor = ColorFromHex(colorList.SelectedItems[0].Text.Substring(0, 6));
+                Clipboard.SetText($"{copyColor.R.ToString()}, {copyColor.G.ToString()}, {copyColor.B.ToString()}");
+            }
+            catch 
+            { MessageBox.Show("Failed to copy RGB values"); }
         }
     }
 }

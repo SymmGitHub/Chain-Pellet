@@ -117,6 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="autocompleteMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>130, 17</value>
+  </metadata>
+  <data name="autocompleteMenu1.Colors" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAENBdXRvY29tcGxldGVNZW51LVNjaW50aWxsYU5FVCwgQ3VsdHVy
+        ZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsDAMAAABRU3lzdGVtLkRyYXdpbmcsIFZlcnNpb249
+        NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhBQEA
+        AAAZQXV0b2NvbXBsZXRlTWVudU5TLkNvbG9ycwYAAAAaPEZvcmVDb2xvcj5rX19CYWNraW5nRmllbGQa
+        PEJhY2tDb2xvcj5rX19CYWNraW5nRmllbGQiPFNlbGVjdGVkRm9yZUNvbG9yPmtfX0JhY2tpbmdGaWVs
+        ZCI8U2VsZWN0ZWRCYWNrQ29sb3I+a19fQmFja2luZ0ZpZWxkIzxTZWxlY3RlZEJhY2tDb2xvcjI+a19f
+        QmFja2luZ0ZpZWxkIjxIaWdobGlnaHRpbmdDb2xvcj5rX19CYWNraW5nRmllbGQEBAQEBAQUU3lzdGVt
+        LkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAABRTeXN0ZW0uRHJhd2luZy5D
+        b2xvcgMAAAAUU3lzdGVtLkRyYXdpbmcuQ29sb3IDAAAAFFN5c3RlbS5EcmF3aW5nLkNvbG9yAwAAABRT
+        eXN0ZW0uRHJhd2luZy5Db2xvcgMAAAACAAAABfz///8UU3lzdGVtLkRyYXdpbmcuQ29sb3IEAAAABG5h
+        bWUFdmFsdWUKa25vd25Db2xvcgVzdGF0ZQEAAAAJBwcDAAAACgAAAAAAAAAAIwABAAH7/////P///woA
+        AAAAAAAAAKQAAQAB+v////z///8KAAAAAAAAAAAjAAEAAfn////8////CgAAAAAAAAAAfwABAAH4////
+        /P///woAAAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAAB/AAEACw==
+</value>
+  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

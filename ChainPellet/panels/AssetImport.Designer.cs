@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             AssetHierarchy = new TreeView();
             label2 = new Label();
             ImportBtn = new Button();
+            assetImportContext = new ContextMenuStrip(components);
+            openAssetToolStripMenuItem = new ToolStripMenuItem();
+            openAssetLocationToolStripMenuItem = new ToolStripMenuItem();
+            deleteAssetToolStripMenuItem = new ToolStripMenuItem();
+            assetImportContext.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +58,8 @@
             AssetHierarchy.Name = "AssetHierarchy";
             AssetHierarchy.Size = new Size(575, 558);
             AssetHierarchy.TabIndex = 1;
-            AssetHierarchy.NodeMouseClick += AssetHierarchy_NodeMouseClick;
+            AssetHierarchy.NodeMouseDoubleClick += AssetHierarchy_NodeMouseDoubleClick;
+            AssetHierarchy.MouseDown += AssetHierarchy_MouseDown;
             // 
             // label2
             // 
@@ -74,6 +81,34 @@
             ImportBtn.UseVisualStyleBackColor = true;
             ImportBtn.Click += ImportBtn_Click;
             // 
+            // assetImportContext
+            // 
+            assetImportContext.ImageScalingSize = new Size(20, 20);
+            assetImportContext.Items.AddRange(new ToolStripItem[] { openAssetToolStripMenuItem, openAssetLocationToolStripMenuItem, deleteAssetToolStripMenuItem });
+            assetImportContext.Name = "assetHierarchyContext";
+            assetImportContext.Size = new Size(215, 76);
+            // 
+            // openAssetToolStripMenuItem
+            // 
+            openAssetToolStripMenuItem.Name = "openAssetToolStripMenuItem";
+            openAssetToolStripMenuItem.Size = new Size(214, 24);
+            openAssetToolStripMenuItem.Text = "Open Asset";
+            openAssetToolStripMenuItem.Click += openAssetToolStripMenuItem_Click;
+            // 
+            // openAssetLocationToolStripMenuItem
+            // 
+            openAssetLocationToolStripMenuItem.Name = "openAssetLocationToolStripMenuItem";
+            openAssetLocationToolStripMenuItem.Size = new Size(214, 24);
+            openAssetLocationToolStripMenuItem.Text = "Open Asset Location";
+            openAssetLocationToolStripMenuItem.Click += openAssetLocationToolStripMenuItem_Click;
+            // 
+            // deleteAssetToolStripMenuItem
+            // 
+            deleteAssetToolStripMenuItem.Name = "deleteAssetToolStripMenuItem";
+            deleteAssetToolStripMenuItem.Size = new Size(214, 24);
+            deleteAssetToolStripMenuItem.Text = "Delete Asset";
+            deleteAssetToolStripMenuItem.Click += deleteAssetToolStripMenuItem_Click;
+            // 
             // AssetImport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -86,6 +121,7 @@
             Name = "AssetImport";
             Size = new Size(578, 630);
             Load += AssetImport_Load;
+            assetImportContext.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -96,5 +132,9 @@
         private TreeView AssetHierarchy;
         private Label label2;
         private Button ImportBtn;
+        private ContextMenuStrip assetImportContext;
+        private ToolStripMenuItem openAssetToolStripMenuItem;
+        private ToolStripMenuItem openAssetLocationToolStripMenuItem;
+        private ToolStripMenuItem deleteAssetToolStripMenuItem;
     }
 }
