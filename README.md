@@ -56,6 +56,7 @@ In the Asset Hierarchy clicking on the 'Add Asset' button will prompt you to sel
 Above the buttons is a large textbox labelled 'Filter' which you can use to filter out which files are shown in the Asset Hierarchy, making it easier to navigate to whatever file you're looking for. When adding in text, the Asset Hierarchy will update to only show files containing the string of characters in your filter text, and you can use special characters to change how the Asset Hierarchy uses that filter.
 
 ( | ) - Separates one filter into multiple, the Asset Hierarchy will display only files that contain one or more of that filter text.
+
 ( ! ) - Reverses filter to hide any file that contains it instead of any file that doesn't.
 
 For example, the filter: ( !nxf|!tpl ) will hide all the files that contain "nxf" and "tpl", and so it'll hide files with either of those extensions.
