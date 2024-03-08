@@ -175,7 +175,8 @@
             Controls.Add(stringList);
             MinimumSize = new Size(350, 350);
             Name = "DolEditor";
-            Text = "DolEditor";
+            ShowIcon = false;
+            Text = "(.Dol) Editor";
             Load += DolEditor_Load;
             ResumeLayout(false);
             PerformLayout();
