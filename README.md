@@ -18,10 +18,12 @@ HxD is one of many Hex Editors capable of editing any file's raw byte data.
 
 -- Brawlbox
 Brawlbox is a Wii/GCN file editor capable of editing .tpl texture files found in the game
+
 https://github.com/libertyernie/brawltools/releases/tag/v0.78_h1
 
 -- Audacity and MP-Audio-Toolchain
 Audacity is a free audio file editor, and MP-Prime-Toolchain, (a series of tools made for the Gamecube version of Metroid Prime) can modify Aufacity to support the editing of PMW2's music files, (.dsp)
+
 https://www.audacityteam.org/download/
 https://github.com/toasterparty/mp-audio-toolchain/tree/main
 
