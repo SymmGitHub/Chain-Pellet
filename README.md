@@ -62,20 +62,32 @@ For example, the filter: ( !nxf|!tpl ) will hide all the files that contain "nxf
 
 ## PMW2 GCN Filetypes:
 (.txt) - Text Files, used for Level Scripts (Script.txt) and In-Game Cutscenes/Dialogue (Cinema.txt) 
+
 (.nxf) - 3D Model
+
 (.hxf) - 3D Model, contains multiple (.nxf) files and may contain collision.
+
 (.amf) - Animation file for a 3D model
+
 (.tpl) - Texture
+
 (.sf) - Level Scene
+
 (.ccc) - Level Collision
+
 (.h4m) - Prerendered Cutscene
+
 (.dsp) - Mono Music Track, two are used to make Stereo Music
+
 (.sam) - Sound Effect Bank, contains all sound effects for each level.
 
 ## Filetypes in other versions
 (.pmi) - Texture (PS2)
+
 (.vu1) - 3D Model (PS2)
+
 (.dds) - Texture (PC)
+
 (.ogg) - Sound Effect/Music (PC)
 
 ## Scene Editor
