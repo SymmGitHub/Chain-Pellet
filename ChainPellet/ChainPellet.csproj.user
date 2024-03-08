@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="AddNode.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DolEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,13 +19,22 @@
     <Compile Update="panels\ScriptEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="panels\setup\SetupBounds.cs">
+    <Compile Update="panels\sf\ArrayEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="panels\setup\SetupGeneric.cs">
+    <Compile Update="panels\sf\BezierEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="panels\setup\SetupNurbs.cs">
+    <Compile Update="panels\sf\BoundsEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="panels\sf\CameraEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="panels\sf\EmptyEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="panels\sf\LightEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
