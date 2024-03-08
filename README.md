@@ -27,7 +27,7 @@ Audacity is a free audio file editor, and MP-Prime-Toolchain, (a series of tools
 https://www.audacityteam.org/download/
 https://github.com/toasterparty/mp-audio-toolchain/tree/main
 
-########### Extracting The Game Files and Playing Modded PMW2 ###########
+## Extracting The Game Files and Playing Modded PMW2
 
 To first get the files from Pac-Man World 2, you'll need a Gamecube rom of the game, and Dolphin. Open Dolphin and make sure your PMW2 rom is in the list of games in the center of the window. If it isn't, go to { Options > Configuration > Path } and add a pathway to the folder containing your rom.
 
@@ -35,7 +35,7 @@ With PMW2 in your list of games, right-click it and select 'Properties'. In the 
 
 If you want to play the game from these files at any point, click { File > Open } in the top left corner of Dolphin, and navigate to the extracted files. From there, open { DATA > sys > main.dol }and Dolphin will play PMW2 from those extracted files.
 
-########### Using Chain Pellet ###########
+## Using Chain Pellet
 
 With the extracted files of PMW2, now you can finally start using Chain Pellet to edit them. When opening the tool, there's three main sections. The Asset Hierarchy on the left, the Scene Editor on the right, and the empty space is for various file editors. To open a level, click { File > Open Rar } and select a PMW2 (.rar) file, on the Gamecube version of the game, you can find them in { DATA > files > netdata }. They should mostly be self explanatory, 'forest1.rar' is Pac-Village, 'snow4.rar' is Pinky's Revenge, 'ghost1.rar' is Haunted Boardwalk, and so on. 
 
@@ -45,7 +45,7 @@ Opening a level will extract the (.rar) file using a special, old version of Win
 
 The 'Tools' Menu at the top of the window contains various individual functions. 'Extract PMW2 Rar' and 'Create PMW2 Rar' Buttons allow you to convert a folder to and from a PMW2 rar file without needing to open it, and 'Refresh' reloads the Asset Hierarchy.
 
-########### Asset Hierarchy ###########
+## Asset Hierarchy
 
 On the left side of the window is the Asset Hierarchy, this displays all the files stored in a level file when opening a (.rar) file. Most files are color coordinated, with yellow marking a subfolder. You can click files to select them, and if there's an associated File Editor for that type of file, it'll appear in the center of the window. Only two exist as of this build, being the Script Editor for (.txt) files and the Model Color Editor for Model Files (.hxf/nxf). Double clicking any file in the Asset Hierarchy acts the same as if you'd have double clicked the file in your File Explorer, opening it in whatever program that file extension is associated with.
 
@@ -78,7 +78,7 @@ For example, the filter: ( !nxf|!tpl ) will hide all the files that contain "nxf
 (.dds) - Texture (PC)
 (.ogg) - Sound Effect/Music (PC)
 
-########### Scene Editor ###########
+## Scene Editor
 The right side of the window is the Scene Editor, it's the most complicated-looking part and so I'll be going over it thoroughly. When opening a level, Chain Pellet will check if a file named 'Level.sf' exists. This is the Scene file of the level, and it contains the majority of the level information, things like where level geometry models are placed, the coordinates of objects, pathways used for things like lines of Pac-Dots, etc.
 
 the Textbox labelled 'Name' is where you can read and edit the level's internal name, this has no affect on anything to my knowledge, but it could be good for organization if you're making multiple versions of the same level. Version is the Scene file's update version, it's best to keep this as-is.
@@ -86,15 +86,15 @@ the Textbox labelled 'Name' is where you can read and edit the level's internal 
 The 6 textboxes underneath are used for defining Scene Clumps within the level, but by my testing, doesn't have any visible effect on levels. You can only edit these values if you have the option enabled to regenerate Scene Clumps upon saving. [ Settings > Scene Editor > Regenerate Clumps On Save ]
 
 On the left side of the Scene Editor is the Node List. PMW2 Scene Files contain a list of scene placement points I've nicknamed 'Nodes'. Nodes contain two names as well as Transformation coordinates. (Position, rotation, and scale). Nodes come in various different types, and depending on the type of Node, they can also store additional data within them. Here's some of the most important, and frequently used Node types:
-## Static - Places a model, '[Geometry Name].nxf' at the coordinates of the Node. Keep in mind that models of level geometry don't store collision, only the (.ccc) files do.
-## Point - Coordinates with a name, used most often by Level Scripts to place an object at the node's position. The Node's name usually ends in '_pnt'.
-## Bounding Box - used most for trigger areas, it creates an invisible box at it's position, it contains two additional points for offsetting two of the box's corners to control the size. The Node's name usually ends in '_bnd'.
-## Point Array - A Point that contains additional position coordinates, used for a few specific objects in Level Scripts.
-## Bezier - Used for curves and paths, most commonly used for Pac-Dot pathways and chains, the names typically end in '_nurbs'.
+-- Static: Places a model, '[Geometry Name].nxf' at the coordinates of the Node. Keep in mind that models of level geometry don't store collision, only the (.ccc) files do.
+-- Point: Coordinates with a name, used most often by Level Scripts to place an object at the node's position. The Node's name usually ends in '_pnt'.
+-- Bounding Box: used most for trigger areas, it creates an invisible box at it's position, it contains two additional points for offsetting two of the box's corners to control the size. The Node's name usually ends in '_bnd'.
+-- Point Array: A Point that contains additional position coordinates, used for a few specific objects in Level Scripts.
+-- Bezier: Used for curves and paths, most commonly used for Pac-Dot pathways and chains, the names typically end in '_nurbs'.
 
 To edit a node, simply select one from the list, and you'll be able to edit that Node's data at the bottom of the Scene Editor. That Transformation Tab contains default information for every Node, and the Additional Data contains any special, type-specific information available for editing.
 
-########### Level Editing ###########
+## Level Editing
 
 When extracting a (.rar) file, if a file called 'Script.txt' exists, it's opened first in the center of the window. The majority of level editing can be done by editing this file, as it controls where most objects are placed. Level Scripts are made of various lines corresponding to different functions refered to as 'actions'. Here's a line for example:
 
