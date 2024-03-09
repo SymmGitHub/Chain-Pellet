@@ -3,7 +3,9 @@ PMW2 files before doing anything permanent!
 
 ## Credits:
 Symm - Main Programmer and UI Design.
+
 OnVar - PMW2 file documentation, creator of 'pmw2-utils', which I referenced for a lot of file-reading code, and answering my questions.
+
 Crazy Otto - Beta Tester and documentation of old or unused assets in PMW2.
 
 This README also serves as a manual, and it'll cover all the basics of modding PMW2 with the use of Chain Pellet. Chain Pellet is a W.I.P. multipurpose program meant to open and edit files found in PMW2, mainly versions found in the Gamecube version of the game (though other versions partially still work with Chain Pellet). This tool, as of now, has exclusively been played and tested through the use of the Dolphin Emulator and a rom of PMW2.
