@@ -1,5 +1,8 @@
-Chain Pellet is a WIP, so make sure to always back up your
-PMW2 files before doing anything permanent!
+This README also serves as a manual, and it'll cover all the basics of modding PMW2 with the use of Chain Pellet. Chain Pellet is a W.I.P. multipurpose program meant to open and edit files found in PMW2, mainly versions found in the Gamecube version of the game (though editing scripts and scene files on other versions seemingly works too). This tool, as of now, has exclusively been played and tested through the use of the Dolphin Emulator and a rom of PMW2. Remember to always back up your files before doing anything permanent!
+
+Chain Pellet's main usage is for editing scripts (.txt) and scene (.sf) files, though also can be used to edit internal strings stored in GCN PMW2's 'main.dol' file to edit level and boss names. Chain pellet also includes a primitive model editor, but it only works with models found in the GCN version of the game and can only be used to change vertex colors.
+
+Further down, I'll also be including a guide on how to extract files from the Gamecube version of PMW2 with the Dolphin Emulator and playing it modded using those open files.
 
 ## Credits:
 Symm - Main Programmer and UI Design.
@@ -8,13 +11,7 @@ OnVar - PMW2 file documentation, creator of 'pmw2-utils', which I referenced for
 
 Crazy Otto - Beta Tester and documentation of old or unused assets in PMW2.
 
-This README also serves as a manual, and it'll cover all the basics of modding PMW2 with the use of Chain Pellet. Chain Pellet is a W.I.P. multipurpose program meant to open and edit files found in PMW2, mainly versions found in the Gamecube version of the game (though other versions partially still work with Chain Pellet). This tool, as of now, has exclusively been played and tested through the use of the Dolphin Emulator and a rom of PMW2.
-
-This is the very first main build of the tool, and as such, it may contain some bugs. Make sure to always back up your PMW2 files before doing anything permanent! But as of now, Chain Pellet is still capable of fully editing level scripts, level nodes, and even colors on 3D models.
-
-I'll also be including a guide on how to extract files from the Gamecube version of PMW2 with the Dolphin Emulator and playing it modded using those open files.
-
-## Additional Tools (Optional)
+## Additional Recommended Tools (Optional)
 -- HxD 
 HxD is one of many Hex Editors capable of editing any file's raw byte data.
 
@@ -24,7 +21,7 @@ Brawlbox is a Wii/GCN file editor capable of editing .tpl texture files found in
 https://github.com/libertyernie/brawltools/releases/tag/v0.78_h1
 
 -- Audacity and MP-Audio-Toolchain
-Audacity is a free audio file editor, and MP-Prime-Toolchain, (a series of tools made for the Gamecube version of Metroid Prime) can modify Aufacity to support the editing of PMW2's music files, (.dsp)
+Audacity is a free audio file editor, and MP-Prime-Toolchain, (a series of tools made for the Gamecube version of Metroid Prime) can modify Audacity to support the editing of PMW2's music files, (.dsp)
 
 https://www.audacityteam.org/download/
 https://github.com/toasterparty/mp-audio-toolchain/tree/main
